@@ -17,7 +17,7 @@ const siteMetadata = {
 
   analytics: {
     plausibleAnalytics: {
-      domain: '',
+      plausibleDataDomain: '',
     },
   },
 
