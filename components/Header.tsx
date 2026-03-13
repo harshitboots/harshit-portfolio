@@ -7,44 +7,54 @@ import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
 
 const Header = () => {
-  let headerClass = 'flex items-center w-full bg-white dark:bg-gray-950 justify-between py-10'
+  let headerClass = 'w-full bg-transparent'
   if (siteMetadata.stickyNav) {
-    headerClass += ' sticky top-0 z-50'
+    headerClass += ' sticky top-0 z-50 backdrop-blur-md'
   }
 
   return (
     <header className={headerClass}>
-      <Link href="/" aria-label={siteMetadata.headerTitle}>
-        <div className="flex items-center justify-between">
-          <div className="mr-3">
-            <Logo />
-          </div>
-          {typeof siteMetadata.headerTitle === 'string' ? (
-            <div className="hidden h-6 text-2xl font-semibold sm:block">
-              {siteMetadata.headerTitle}
+      <div className="mx-auto max-w-[1400px] flex items-center justify-between px-10 py-6">
+
+        {/* LOGO + NAME */}
+        <Link href="/" aria-label={siteMetadata.headerTitle}>
+          <div className="flex items-center">
+            <div className="mr-3">
+              <Logo />
             </div>
-          ) : (
-            siteMetadata.headerTitle
-          )}
+
+            {typeof siteMetadata.headerTitle === 'string' ? (
+              <div className="hidden text-xl font-semibold sm:block">
+                {siteMetadata.headerTitle}
+              </div>
+            ) : (
+              siteMetadata.headerTitle
+            )}
+          </div>
+        </Link>
+
+        {/* NAVIGATION */}
+        <div className="flex items-center space-x-6">
+
+          <div className="hidden sm:flex items-center space-x-6">
+            {headerNavLinks
+              .filter((link) => link.href !== '/')
+              .map((link) => (
+                <Link
+                  key={link.title}
+                  href={link.href}
+                  className="text-lg font-medium text-gray-300 hover:text-cyan-400 transition"
+                >
+                  {link.title}
+                </Link>
+              ))}
+          </div>
+
+          <SearchButton />
+          <ThemeSwitch />
+          <MobileNav />
+
         </div>
-      </Link>
-      <div className="flex items-center space-x-4 leading-5 sm:-mr-6 sm:space-x-6">
-        <div className="no-scrollbar hidden max-w-40 items-center gap-x-4 overflow-x-auto sm:flex md:max-w-72 lg:max-w-96">
-          {headerNavLinks
-            .filter((link) => link.href !== '/')
-            .map((link) => (
-              <Link
-                key={link.title}
-                href={link.href}
-                className="hover:text-primary-500 dark:hover:text-primary-400 m-1 font-medium text-gray-900 dark:text-gray-100"
-              >
-                {link.title}
-              </Link>
-            ))}
-        </div>
-        <SearchButton />
-        <ThemeSwitch />
-        <MobileNav />
       </div>
     </header>
   )

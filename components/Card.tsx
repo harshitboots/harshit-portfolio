@@ -2,11 +2,21 @@ import Image from './Image'
 import Link from './Link'
 
 const Card = ({ title, description, imgSrc, href }) => (
-  <div className="md max-w-[544px] p-4 md:w-1/2">
+  <div className="max-w-[544px] p-4 md:w-1/2">
     <div
-      className={`${
-        imgSrc && 'h-full'
-      } overflow-hidden rounded-md border-2 border-gray-200/60 dark:border-gray-700/60`}
+      className={`
+        ${imgSrc && 'h-full'}
+        overflow-hidden
+        rounded-xl
+        border border-white/10
+        bg-white/5
+        backdrop-blur-md
+        transition-all
+        duration-300
+        hover:scale-[1.02]
+        hover:border-cyan-400/40
+        hover:shadow-lg
+      `}
     >
       {imgSrc &&
         (href ? (
@@ -14,7 +24,7 @@ const Card = ({ title, description, imgSrc, href }) => (
             <Image
               alt={title}
               src={imgSrc}
-              className="object-cover object-center md:h-36 lg:h-48"
+              className="object-cover object-center md:h-36 lg:h-48 transition-transform duration-300 hover:scale-105"
               width={544}
               height={306}
             />
@@ -23,13 +33,14 @@ const Card = ({ title, description, imgSrc, href }) => (
           <Image
             alt={title}
             src={imgSrc}
-            className="object-cover object-center md:h-36 lg:h-48"
+            className="object-cover object-center md:h-36 lg:h-48 transition-transform duration-300 hover:scale-105"
             width={544}
             height={306}
           />
         ))}
+
       <div className="p-6">
-        <h2 className="mb-3 text-2xl leading-8 font-bold tracking-tight">
+        <h2 className="mb-3 text-2xl font-bold tracking-tight text-white">
           {href ? (
             <Link href={href} aria-label={`Link to ${title}`}>
               {title}
@@ -38,14 +49,18 @@ const Card = ({ title, description, imgSrc, href }) => (
             title
           )}
         </h2>
-        <p className="prose mb-3 max-w-none text-gray-500 dark:text-gray-400">{description}</p>
+
+        <p className="mb-4 text-gray-400 leading-relaxed">
+          {description}
+        </p>
+
         {href && (
           <Link
             href={href}
-            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-base leading-6 font-medium"
+            className="text-cyan-400 hover:text-cyan-300 text-base font-medium"
             aria-label={`Link to ${title}`}
           >
-            Learn more &rarr;
+            Learn more →
           </Link>
         )}
       </div>

@@ -4,26 +4,23 @@
 @source '../node_modules/pliny';
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Core theme configuration */
-@theme {
-  /* Font families */
-  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+/* =========================
+   THEME CONFIGURATION
+========================= */
 
-  /* Colors */
-  /* Copied from https://tailwindcss.com/docs/theme#default-theme-variable-reference */
+@theme {
+
+  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+
+  /* Primary */
   --color-primary-50: oklch(0.971 0.014 343.198);
   --color-primary-100: oklch(0.948 0.028 342.258);
   --color-primary-200: oklch(0.899 0.061 343.231);
   --color-primary-300: oklch(0.823 0.12 346.018);
   --color-primary-400: oklch(0.718 0.202 349.761);
   --color-primary-500: oklch(0.656 0.241 354.308);
-  --color-primary-600: oklch(0.592 0.249 0.584);
-  --color-primary-700: oklch(0.525 0.223 3.958);
-  --color-primary-800: oklch(0.459 0.187 3.815);
-  --color-primary-900: oklch(0.408 0.153 2.432);
-  --color-primary-950: oklch(0.284 0.109 3.907);
 
+  /* Gray */
   --color-gray-50: oklch(0.985 0.002 247.839);
   --color-gray-100: oklch(0.967 0.003 264.542);
   --color-gray-200: oklch(0.928 0.006 264.531);
@@ -36,140 +33,325 @@
   --color-gray-900: oklch(0.21 0.034 264.665);
   --color-gray-950: oklch(0.13 0.028 261.692);
 
-  /* Line heights */
-  --line-height-11: 2.75rem;
-  --line-height-12: 3rem;
-  --line-height-13: 3.25rem;
-  --line-height-14: 3.5rem;
-
-  /* Z-index values */
-  --z-60: 60;
-  --z-70: 70;
-  --z-80: 80;
 }
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+/* =========================
+   BASE FIXES
+========================= */
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
 
-  a,
-  button {
-    outline-color: var(--color-primary-500);
-  }
-
-  a:focus-visible,
-  button:focus-visible {
-    outline: 2px solid;
-    border-radius: var(--radius-sm);
-    outline-color: var(--color-primary-500);
-  }
+*,
+::after,
+::before {
+border-color: var(--color-gray-200, currentColor);
 }
+
+a,
+button {
+outline-color: var(--color-primary-500);
+}
+
+a:focus-visible,
+button:focus-visible {
+outline: 2px solid;
+border-radius: 6px;
+outline-color: var(--color-primary-500);
+}
+
+}
+
+/* =========================
+   PROSE STYLING
+========================= */
 
 @layer utilities {
-  .prose {
-    & a {
-      color: var(--color-primary-500);
-      &:hover {
-        color: var(--color-primary-600);
-      }
-      & code {
-        color: var(--color-primary-400);
-      }
-    }
-    & :where(h1, h2) {
-      font-weight: 700;
-      letter-spacing: var(--tracking-tight);
-    }
-    & h3 {
-      font-weight: 600;
-    }
-    & :where(code):not(pre code) {
-      color: var(--color-indigo-500);
-    }
-  }
 
-  .prose-invert {
-    & a {
-      color: var(--color-primary-500);
-      &:hover {
-        color: var(--color-primary-400);
-      }
-      & code {
-        color: var(--color-primary-400);
-      }
-    }
-    & :where(h1, h2, h3, h4, h5, h6) {
-      color: var(--color-gray-100);
-    }
-  }
+.prose a {
+color: var(--color-primary-500);
 }
 
-.task-list-item::before {
-  @apply hidden;
+.prose a:hover {
+color: var(--color-primary-600);
 }
 
-.task-list-item {
-  @apply list-none;
+.prose-invert h1,
+.prose-invert h2,
+.prose-invert h3 {
+color: var(--color-gray-100);
 }
 
-.footnotes {
-  @apply mt-12 border-t border-gray-200 pt-8 dark:border-gray-700;
 }
 
-.data-footnote-backref {
-  @apply no-underline;
+/* =========================
+   PREMIUM BACKGROUND
+========================= */
+
+body {
+
+background:
+
+radial-gradient(circle at 20% 20%, rgba(0,255,255,0.18), transparent 40%),
+radial-gradient(circle at 80% 30%, rgba(0,150,255,0.15), transparent 40%),
+radial-gradient(circle at 50% 80%, rgba(0,200,255,0.12), transparent 40%),
+
+#0a0f1c;
+
 }
 
-.csl-entry {
-  @apply my-5;
+/* grid overlay */
+
+body::before {
+
+content:"";
+position:fixed;
+inset:0;
+
+background-image:
+
+linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+
+background-size:60px 60px;
+
+pointer-events:none;
+
 }
+
+/* =========================
+   PREMIUM PROFILE RING
+========================= */
+
+.profile-container {
+
+position:relative;
+width:260px;
+height:260px;
+border-radius:50%;
+
+}
+
+/* rotating neon ring */
+
+.profile-container::before {
+
+content:"";
+position:absolute;
+inset:-6px;
+
+border-radius:50%;
+
+background:conic-gradient(
+#22d3ee,
+#3b82f6,
+#6366f1,
+#a855f7,
+#22d3ee
+);
+
+animation:spinRing 8s linear infinite;
+
+filter:blur(10px);
+
+}
+
+/* mask */
+
+.profile-container::after {
+
+content:"";
+position:absolute;
+inset:6px;
+
+border-radius:50%;
+
+background:#0b1120;
+
+}
+
+/* image */
+
+.profile-image {
+
+position:relative;
+border-radius:50%;
+z-index:2;
+
+}
+
+/* animation */
+
+@keyframes spinRing {
+
+0% {
+transform:rotate(0deg);
+}
+
+100% {
+transform:rotate(360deg);
+}
+
+}
+
+/* =========================
+   CONTACT PAGE CARD
+========================= */
+
+.contact-card {
+
+position:relative;
+
+background:#0f172a;
+
+padding:30px;
+
+border-radius:16px;
+
+/* bright neon border */
+
+border:1px solid rgba(34,211,238,0.35);
+
+/* SAME SIZE BOXES */
+
+height:200px;
+
+display:flex;
+flex-direction:column;
+justify-content:flex-start;
+
+gap:12px;
+
+transition:all .35s ease;
+
+cursor:pointer;
+
+overflow:hidden;
+
+}
+
+/* glowing border layer */
+
+.contact-card::before {
+
+content:"";
+
+position:absolute;
+
+inset:-1px;
+
+border-radius:16px;
+
+background:linear-gradient(
+120deg,
+rgba(34,211,238,.9),
+rgba(59,130,246,.8),
+rgba(99,102,241,.8)
+);
+
+opacity:.25;
+
+filter:blur(12px);
+
+z-index:-1;
+
+}
+
+/* icon container */
+
+.contact-card .icon-wrapper{
+
+width:44px;
+height:44px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+border-radius:10px;
+
+background:rgba(34,211,238,0.12);
+
+color:#22d3ee;
+
+margin-bottom:6px;
+
+transition:all .3s ease;
+
+}
+
+/* title */
+
+.contact-card h3{
+
+font-size:20px;
+font-weight:600;
+
+color:white;
+
+}
+
+/* description */
+
+.contact-card p{
+
+color:#94a3b8;
+
+font-size:15px;
+
+line-height:1.5;
+
+}
+
+/* hover */
+
+.contact-card:hover{
+
+transform:translateY(-6px) scale(1.03);
+
+border-color:#22d3ee;
+
+box-shadow:
+
+0 0 30px rgba(34,211,238,.7),
+0 0 60px rgba(34,211,238,.35),
+0 0 90px rgba(34,211,238,.15);
+
+}
+
+/* icon glow */
+
+.contact-card:hover .icon-wrapper{
+
+background:rgba(34,211,238,0.25);
+
+box-shadow:
+
+0 0 20px rgba(34,211,238,.8);
+
+}
+
+/* =========================
+   REMOVE SCROLLBAR
+========================= */
 
 .no-scrollbar::-webkit-scrollbar {
-  display: none;
+display:none;
 }
 
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+-ms-overflow-style:none;
+scrollbar-width:none;
 }
 
-/* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
+/* =========================
+   INPUT AUTOFILL FIX
+========================= */
+
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
-  transition:
-    background-color 600000s 0s,
-    color 600000s 0s;
-}
 
-.katex-display {
-  overflow: auto hidden;
-}
+transition:
+background-color 600000s 0s,
+color 600000s 0s;
 
-.content-header-link {
-  opacity: 0;
-  margin-left: -24px;
-  padding-right: 4px;
-}
-
-.content-header:hover .content-header-link,
-.content-header-link:hover {
-  opacity: 1;
-}
-
-.linkicon {
-  display: inline-block;
-  vertical-align: middle;
 }

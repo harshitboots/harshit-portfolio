@@ -1,37 +1,56 @@
-import Link from './Link'
 import siteMetadata from '@/data/siteMetadata'
 import SocialIcon from '@/components/social-icons'
 
-export default function Footer() {
+const Footer = () => {
   return (
-    <footer>
-      <div className="mt-16 flex flex-col items-center">
-        <div className="mb-3 flex space-x-4">
-          <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={6} />
-          <SocialIcon kind="github" href={siteMetadata.github} size={6} />
-          <SocialIcon kind="facebook" href={siteMetadata.facebook} size={6} />
-          <SocialIcon kind="youtube" href={siteMetadata.youtube} size={6} />
-          <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={6} />
-          <SocialIcon kind="twitter" href={siteMetadata.twitter} size={6} />
-          <SocialIcon kind="bluesky" href={siteMetadata.bluesky} size={6} />
-          <SocialIcon kind="x" href={siteMetadata.x} size={6} />
-          <SocialIcon kind="instagram" href={siteMetadata.instagram} size={6} />
-          <SocialIcon kind="threads" href={siteMetadata.threads} size={6} />
-          <SocialIcon kind="medium" href={siteMetadata.medium} size={6} />
-        </div>
-        <div className="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400">
-          <div>{siteMetadata.author}</div>
-          <div>{` • `}</div>
-          <div>{`© ${new Date().getFullYear()}`}</div>
-          <div>{` • `}</div>
-          <Link href="/">{siteMetadata.title}</Link>
-        </div>
-        <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
-          <Link href="https://github.com/timlrx/tailwind-nextjs-starter-blog">
-            Tailwind Nextjs Theme
-          </Link>
-        </div>
+    <footer className="mt-02">
+
+      {/* GLOWING DIVIDER */}
+
+      <div className="w-full flex justify-center mb-12">
+        <div className="h-[2px] w-[100%] bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 blur-[0.5px] opacity-80"></div>
       </div>
+
+      <div className="flex flex-col items-center space-y-6 pb-12">
+
+        {/* SOCIAL ICONS */}
+
+        <div className="flex space-x-10 text-pink-600 text-3xl hover:text-pink-300 transition duration-200">
+
+          {siteMetadata.github && (
+            <SocialIcon kind="github" href={siteMetadata.github} size={10} />
+          )}
+
+          {siteMetadata.linkedin && (
+            <SocialIcon kind="linkedin" href={siteMetadata.linkedin} size={10} />
+          )}
+
+          {siteMetadata.medium && (
+            <SocialIcon kind="medium" href={siteMetadata.medium} size={10} />
+          )}
+
+          {siteMetadata.youtube && (
+            <SocialIcon kind="youtube" href={siteMetadata.youtube} size={10} />
+          )}
+
+        </div>
+
+        {/* COPYRIGHT */}
+
+        <p className="text-white text-lg font-medium">
+          © {new Date().getFullYear()} Harshit Tripathi
+        </p>
+
+        {/* TAGLINE */}
+
+        <p className="text-gray-300 text-lg text-center max-w-xl">
+          Building modern data platforms and lakehouse architectures
+        </p>
+
+      </div>
+
     </footer>
   )
 }
+
+export default Footer
