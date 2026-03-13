@@ -4,19 +4,7 @@ import Link from './Link'
 const Card = ({ title, description, imgSrc, href }) => (
   <div className="max-w-[544px] p-4 md:w-1/2">
     <div
-      className={`
-        ${imgSrc && 'h-full'}
-        overflow-hidden
-        rounded-xl
-        border border-white/10
-        bg-white/5
-        backdrop-blur-md
-        transition-all
-        duration-300
-        hover:scale-[1.02]
-        hover:border-cyan-400/40
-        hover:shadow-lg
-      `}
+      className={` ${imgSrc && 'h-full'} overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-md transition-all duration-300 hover:scale-[1.02] hover:border-cyan-400/40 hover:shadow-lg`}
     >
       {imgSrc &&
         (href ? (
@@ -24,7 +12,7 @@ const Card = ({ title, description, imgSrc, href }) => (
             <Image
               alt={title}
               src={imgSrc}
-              className="object-cover object-center md:h-36 lg:h-48 transition-transform duration-300 hover:scale-105"
+              className="object-cover object-center transition-transform duration-300 hover:scale-105 md:h-36 lg:h-48"
               width={544}
               height={306}
             />
@@ -33,7 +21,7 @@ const Card = ({ title, description, imgSrc, href }) => (
           <Image
             alt={title}
             src={imgSrc}
-            className="object-cover object-center md:h-36 lg:h-48 transition-transform duration-300 hover:scale-105"
+            className="object-cover object-center transition-transform duration-300 hover:scale-105 md:h-36 lg:h-48"
             width={544}
             height={306}
           />
@@ -50,14 +38,12 @@ const Card = ({ title, description, imgSrc, href }) => (
           )}
         </h2>
 
-        <p className="mb-4 text-gray-400 leading-relaxed">
-          {description}
-        </p>
+        <p className="mb-4 leading-relaxed text-gray-400">{description}</p>
 
         {href && (
           <Link
             href={href}
-            className="text-cyan-400 hover:text-cyan-300 text-base font-medium"
+            className="text-base font-medium text-cyan-400 hover:text-cyan-300"
             aria-label={`Link to ${title}`}
           >
             Learn more →

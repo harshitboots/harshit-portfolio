@@ -14,8 +14,7 @@ const Header = () => {
 
   return (
     <header className={headerClass}>
-      <div className="mx-auto max-w-[1400px] flex items-center justify-between px-10 py-6">
-
+      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-10 py-6">
         {/* LOGO + NAME */}
         <Link href="/" aria-label={siteMetadata.headerTitle}>
           <div className="flex items-center">
@@ -35,15 +34,14 @@ const Header = () => {
 
         {/* NAVIGATION */}
         <div className="flex items-center space-x-6">
-
-          <div className="hidden sm:flex items-center space-x-6">
+          <div className="hidden items-center space-x-6 sm:flex">
             {headerNavLinks
               .filter((link) => link.href !== '/')
               .map((link) => (
                 <Link
                   key={link.title}
                   href={link.href}
-                  className="text-lg font-medium text-gray-300 hover:text-cyan-400 transition"
+                  className="text-lg font-medium text-gray-300 transition hover:text-cyan-400"
                 >
                   {link.title}
                 </Link>
@@ -53,7 +51,6 @@ const Header = () => {
           <SearchButton />
           <ThemeSwitch />
           <MobileNav />
-
         </div>
       </div>
     </header>

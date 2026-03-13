@@ -1,15 +1,14 @@
-import OpenAI from "openai"
+import OpenAI from 'openai'
 
 if (!process.env.OPENAI_API_KEY) {
-  throw new Error("OPENAI_API_KEY is missing in .env.local")
+  throw new Error('OPENAI_API_KEY is missing in .env.local')
 }
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
+  apiKey: process.env.OPENAI_API_KEY,
 })
 
 export async function POST(req: Request) {
-
   const { question } = await req.json()
 
   const context = `
@@ -25,14 +24,14 @@ Lakehouse, Data Mesh, Data Vault, Knowledge Graph.
 `
 
   const completion = await openai.chat.completions.create({
-    model: "gpt-4o-mini",
+    model: 'gpt-4o-mini',
     messages: [
-      { role: "system", content: context },
-      { role: "user", content: question }
-    ]
+      { role: 'system', content: context },
+      { role: 'user', content: question },
+    ],
   })
 
   return Response.json({
-    answer: completion.choices[0].message.content
+    answer: completion.choices[0].message.content,
   })
 }
