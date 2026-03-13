@@ -20,6 +20,10 @@ const siteMetadata = {
       domain: '',
     },
   },
+
+  comments: {
+    provider: '',
+  },
 }
 
 export default siteMetadata
