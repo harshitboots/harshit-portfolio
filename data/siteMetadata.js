@@ -10,6 +10,10 @@ const siteMetadata = {
   linkedin: 'https://www.linkedin.com/in/harshit-tripathi-503b11193',
   medium: 'https://medium.com/@harshit.herts',
   youtube: 'https://www.youtube.com/channel/UCYdio1sCHiKHgY6WWdAVzKA',
+
+  newsletter: {
+    provider: null,
+  },
 }
 
 export default siteMetadata
