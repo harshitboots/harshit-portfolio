@@ -4,7 +4,7 @@ const siteMetadata = {
   headerTitle: 'Harshit Tripathi',
   description: 'Lead Data Engineer | Data Platforms | Lakehouse Architect',
 
-  siteUrl: 'http://localhost:3000',
+  siteUrl: 'https://harshittripathi.com',
 
   github: 'https://github.com/harshitboots',
   linkedin: 'https://www.linkedin.com/in/harshit-tripathi-503b11193',
@@ -13,6 +13,12 @@ const siteMetadata = {
 
   newsletter: {
     provider: null,
+  },
+
+  analytics: {
+    plausibleAnalytics: {
+      domain: '',
+    },
   },
 }
 
