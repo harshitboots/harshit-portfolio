@@ -15,9 +15,10 @@ export default function YoutubeVideos() {
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(3,1fr)',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
         gap: '30px',
         marginTop: '20px',
+        alignItems: 'stretch',
       }}
     >
       {/* CHANNEL CARD */}
@@ -31,6 +32,7 @@ export default function YoutubeVideos() {
             background: '#0f172a',
             cursor: 'pointer',
             transition: 'all .3s',
+            height: '100%',
           }}
           onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 0 25px rgba(239,68,68,.6)')}
           onMouseLeave={(e) => (e.currentTarget.style.boxShadow = 'none')}
@@ -45,7 +47,7 @@ export default function YoutubeVideos() {
           />
 
           <div style={{ padding: '18px' }}>
-            <h3 style={{ fontSize: '18px' }}>My YouTube Channel</h3>
+            <h3 style={{ fontSize: '18px', marginBottom: '6px' }}>My YouTube Channel</h3>
 
             <p
               style={{
@@ -70,6 +72,7 @@ export default function YoutubeVideos() {
               overflow: 'hidden',
               background: '#0f172a',
               transition: 'all .3s',
+              height: '100%',
             }}
             onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 0 25px rgba(239,68,68,.6)')}
             onMouseLeave={(e) => (e.currentTarget.style.boxShadow = 'none')}
@@ -101,6 +104,7 @@ export default function YoutubeVideos() {
               overflow: 'hidden',
               background: '#0f172a',
               transition: 'all .3s',
+              height: '100%',
             }}
             onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 0 25px rgba(239,68,68,.6)')}
             onMouseLeave={(e) => (e.currentTarget.style.boxShadow = 'none')}

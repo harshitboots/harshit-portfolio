@@ -68,6 +68,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <head>
+        {/* MOBILE RESPONSIVE VIEWPORT */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         <link
           rel="apple-touch-icon"
           sizes="76x76"
@@ -93,7 +96,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" content="#ffffff" />
       </head>
 
-      <body className="text-white antialiased">
+      <body className="overflow-x-hidden text-white antialiased">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
 
@@ -101,29 +104,31 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
               <Header />
 
-              <main className="mb-auto">{children}</main>
+              {/* MAIN CONTENT */}
+              <main className="mb-auto w-full">{children}</main>
             </SearchProvider>
 
             <Footer />
           </SectionContainer>
         </ThemeProviders>
 
+        {/* LIVE CHAT */}
         <Script
           id="tawk-chat"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-      (function(){
-        var s1=document.createElement("script"),
-        s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/69b372d46d0a751c3733782e/1jjifh3h0';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-      })();
-    `,
+              var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+              (function(){
+                var s1=document.createElement("script"),
+                s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/69b372d46d0a751c3733782e/1jjifh3h0';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+              })();
+            `,
           }}
         />
       </body>

@@ -12,8 +12,8 @@ export default function Home() {
 
       <main
         style={{
-          padding: '90px 80px',
-          maxWidth: '1400px',
+          padding: '80px 20px',
+          maxWidth: '1200px',
           margin: '0 auto',
           fontFamily: "'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial",
           color: '#e2e8f0',
@@ -24,9 +24,11 @@ export default function Home() {
         <div
           style={{
             display: 'flex',
+            flexWrap: 'wrap',
             alignItems: 'center',
+            justifyContent: 'center',
             gap: '40px',
-            marginBottom: '40px',
+            marginBottom: '60px',
           }}
         >
           {/* PROFILE IMAGE */}
@@ -37,32 +39,41 @@ export default function Home() {
               borderRadius: '50%',
               background: 'linear-gradient(135deg,#22d3ee,#3b82f6,#6366f1)',
               boxShadow: '0 0 40px rgba(59,130,246,0.6)',
+              width: '220px',
+              height: '220px',
+              overflow: 'hidden',
             }}
           >
-            <div className="profile-container">
-              <Image
-                src="/profile.jpg"
-                width={300}
-                height={300}
-                alt="Harshit Tripathi"
-                className="profile-image"
-                style={{
-                  borderRadius: '50%',
-                  display: 'block',
-                }}
-              />
-            </div>
+            <Image
+              src="/profile.jpg"
+              width={300}
+              height={300}
+              alt="Harshit Tripathi"
+              style={{
+                borderRadius: '50%',
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+              }}
+            />
           </div>
 
           {/* HERO TEXT */}
 
-          <div style={{ maxWidth: '1500px' }}>
+          <div
+            style={{
+              flex: '1',
+              minWidth: '260px',
+              maxWidth: '700px',
+              textAlign: 'left',
+            }}
+          >
             <h1
               style={{
-                fontSize: '50px',
+                fontSize: 'clamp(32px,6vw,48px)',
                 fontWeight: '800',
                 letterSpacing: '-1px',
-                marginBottom: '14px',
+                marginBottom: '10px',
               }}
             >
               Harshit Tripathi
@@ -70,8 +81,8 @@ export default function Home() {
 
             <h2
               style={{
-                fontSize: '20px',
-                marginBottom: '30px',
+                fontSize: 'clamp(16px,3vw,20px)',
+                marginBottom: '25px',
                 fontWeight: '500',
                 color: '#d4af37',
               }}
@@ -81,10 +92,9 @@ export default function Home() {
 
             <p
               style={{
-                fontSize: '21px',
-                lineHeight: '1.9',
+                fontSize: 'clamp(16px,2.5vw,20px)',
+                lineHeight: '1.8',
                 color: '#cbd5f5',
-                maxWidth: '1000px',
               }}
             >
               I design and build modern data platforms that transform complex data ecosystems into
@@ -98,10 +108,10 @@ export default function Home() {
 
         {/* GITHUB */}
 
-        <section style={{ marginTop: '60px' }}>
+        <section style={{ marginTop: '80px' }}>
           <h2
             style={{
-              fontSize: '34px',
+              fontSize: 'clamp(22px,4vw,32px)',
               marginBottom: '30px',
               fontWeight: '600',
             }}
@@ -114,10 +124,10 @@ export default function Home() {
 
         {/* MEDIUM */}
 
-        <section style={{ marginTop: '60px' }}>
+        <section style={{ marginTop: '80px' }}>
           <h2
             style={{
-              fontSize: '34px',
+              fontSize: 'clamp(22px,4vw,32px)',
               marginBottom: '30px',
               fontWeight: '600',
             }}
@@ -130,10 +140,10 @@ export default function Home() {
 
         {/* YOUTUBE */}
 
-        <section style={{ marginTop: '60px' }}>
+        <section style={{ marginTop: '80px' }}>
           <h2
             style={{
-              fontSize: '34px',
+              fontSize: 'clamp(22px,4vw,32px)',
               marginBottom: '10px',
               fontWeight: '600',
             }}
@@ -143,9 +153,9 @@ export default function Home() {
 
           <p
             style={{
-              marginBottom: '60px',
+              marginBottom: '40px',
               color: '#94a3b8',
-              fontSize: '17px',
+              fontSize: 'clamp(14px,2vw,17px)',
             }}
           >
             Watch tutorials and discussions on Data Engineering, Databricks, Data Platforms and

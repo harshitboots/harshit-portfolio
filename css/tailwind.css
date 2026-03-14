@@ -306,3 +306,15 @@ input:-webkit-autofill:focus {
     background-color 600000s 0s,
     color 600000s 0s;
 }
+
+/* Responsive helpers */
+
+.container-responsive {
+  @apply mx-auto max-w-7xl px-6;
+}
+
+@media (max-width: 768px) {
+  .container-responsive {
+    @apply px-4;
+  }
+}

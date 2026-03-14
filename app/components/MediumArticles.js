@@ -15,7 +15,7 @@ export default function MediumArticles() {
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px,1fr))',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
         gap: '30px',
         marginTop: '20px',
         alignItems: 'stretch',
@@ -47,7 +47,7 @@ export default function MediumArticles() {
           />
 
           <div style={{ padding: '18px' }}>
-            <h3 style={{ fontSize: '18px' }}>My Medium Blog</h3>
+            <h3 style={{ fontSize: '18px', marginBottom: '6px' }}>My Medium Blog</h3>
 
             <p
               style={{
@@ -87,17 +87,24 @@ export default function MediumArticles() {
             />
 
             <div style={{ padding: '18px' }}>
-              <h3 style={{ fontSize: '18px' }}>{article.title}</h3>
+              <h3
+                style={{
+                  fontSize: '18px',
+                  marginBottom: '6px',
+                }}
+              >
+                {article.title}
+              </h3>
 
-              {/* SHORT DESCRIPTION ONLY */}
               <p
                 style={{
                   fontSize: '14px',
                   color: '#94a3b8',
-                  marginTop: '6px',
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap',
+                  display: '-webkit-box',
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: 'vertical',
                 }}
               >
                 {article.description}
