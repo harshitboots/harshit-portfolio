@@ -22,7 +22,7 @@ const siteMetadata = {
   },
 
   comments: {
-    provider: '',
+    provider: null,
   },
 }
 

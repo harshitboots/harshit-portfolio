@@ -15,12 +15,13 @@ export default function MediumArticles() {
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(3,1fr)',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px,1fr))',
         gap: '30px',
         marginTop: '20px',
+        alignItems: 'stretch',
       }}
     >
-      {/* MEDIUM PROFILE */}
+      {/* MEDIUM PROFILE CARD */}
 
       <a href="https://medium.com/@harshit.herts" target="_blank">
         <div
@@ -31,6 +32,7 @@ export default function MediumArticles() {
             background: '#0f172a',
             cursor: 'pointer',
             transition: 'all .3s',
+            height: '100%',
           }}
           onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 0 25px rgba(16,185,129,.5)')}
           onMouseLeave={(e) => (e.currentTarget.style.boxShadow = 'none')}
@@ -59,10 +61,10 @@ export default function MediumArticles() {
         </div>
       </a>
 
-      {/* ARTICLE 1 */}
+      {/* LATEST ARTICLES */}
 
-      {articles[0] ? (
-        <a href={articles[0].link} target="_blank">
+      {articles.slice(0, 2).map((article, index) => (
+        <a key={index} href={article.link} target="_blank">
           <div
             style={{
               border: '1px solid #374151',
@@ -70,12 +72,13 @@ export default function MediumArticles() {
               overflow: 'hidden',
               background: '#0f172a',
               transition: 'all .3s',
+              height: '100%',
             }}
             onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 0 25px rgba(16,185,129,.5)')}
             onMouseLeave={(e) => (e.currentTarget.style.boxShadow = 'none')}
           >
             <img
-              src={articles[0].image}
+              src={article.image}
               style={{
                 width: '100%',
                 height: '200px',
@@ -84,81 +87,25 @@ export default function MediumArticles() {
             />
 
             <div style={{ padding: '18px' }}>
-              <h3 style={{ fontSize: '18px' }}>{articles[0].title}</h3>
+              <h3 style={{ fontSize: '18px' }}>{article.title}</h3>
+
+              {/* SHORT DESCRIPTION ONLY */}
+              <p
+                style={{
+                  fontSize: '14px',
+                  color: '#94a3b8',
+                  marginTop: '6px',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {article.description}
+              </p>
             </div>
           </div>
         </a>
-      ) : (
-        <ComingSoon />
-      )}
-
-      {/* ARTICLE 2 */}
-
-      {articles[1] ? (
-        <a href={articles[1].link} target="_blank">
-          <div
-            style={{
-              border: '1px solid #374151',
-              borderRadius: '12px',
-              overflow: 'hidden',
-              background: '#0f172a',
-              transition: 'all .3s',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 0 25px rgba(16,185,129,.5)')}
-            onMouseLeave={(e) => (e.currentTarget.style.boxShadow = 'none')}
-          >
-            <img
-              src={articles[1].image}
-              style={{
-                width: '100%',
-                height: '200px',
-                objectFit: 'cover',
-              }}
-            />
-
-            <div style={{ padding: '18px' }}>
-              <h3 style={{ fontSize: '18px' }}>{articles[1].title}</h3>
-            </div>
-          </div>
-        </a>
-      ) : (
-        <ComingSoon />
-      )}
-    </div>
-  )
-}
-
-function ComingSoon() {
-  return (
-    <div
-      style={{
-        border: '1px solid #374151',
-        borderRadius: '12px',
-        overflow: 'hidden',
-        background: '#0f172a',
-      }}
-    >
-      <img
-        src="/coming-soon.jpg"
-        style={{
-          width: '100%',
-          height: '200px',
-          objectFit: 'cover',
-        }}
-      />
-
-      <div style={{ padding: '18px', textAlign: 'center' }}>
-        <h3 style={{ fontSize: '18px' }}>Coming Soon ✍️</h3>
-
-        <p
-          style={{
-            fontSize: '14px',
-            color: '#94a3b8',
-          }}
-        >
-          New article will appear here soon
-        </p>
-      </div>
+      ))}
     </div>
   )
 }

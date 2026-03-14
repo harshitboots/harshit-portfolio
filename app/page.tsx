@@ -114,7 +114,7 @@ export default function Home() {
 
         {/* MEDIUM */}
 
-        <section style={{ marginTop: '90px' }}>
+        <section style={{ marginTop: '60px' }}>
           <h2
             style={{
               fontSize: '34px',
@@ -130,7 +130,7 @@ export default function Home() {
 
         {/* YOUTUBE */}
 
-        <section style={{ marginTop: '90px' }}>
+        <section style={{ marginTop: '60px' }}>
           <h2
             style={{
               fontSize: '34px',
@@ -143,7 +143,7 @@ export default function Home() {
 
           <p
             style={{
-              marginBottom: '30px',
+              marginBottom: '60px',
               color: '#94a3b8',
               fontSize: '17px',
             }}
