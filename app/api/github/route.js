@@ -1,25 +1,27 @@
 export async function GET() {
+  console.log('TOKEN:', process.env.GITHUB_TOKEN ? 'EXISTS' : 'MISSING')
   try {
     const username = 'harshitboots'
     const token = process.env.GITHUB_TOKEN
 
+    // -----------------------------
+    // HEADERS
+    // -----------------------------
+
     const headers = {
       Accept: 'application/vnd.github+json',
       'User-Agent': 'harshit-portfolio',
-      Authorization: `Bearer ${token}`,
+      ...(token && { Authorization: `Bearer ${token}` }),
     }
 
     // -----------------------------
-    // FETCH GITHUB REPOSITORIES
+    // FETCH USER REPOSITORIES
     // -----------------------------
 
-    const repoResponse = await fetch(
-      `https://api.github.com/users/${username}/repos?sort=updated&per_page=10`,
-      {
-        headers,
-        cache: 'no-store',
-      }
-    )
+    const repoResponse = await fetch(`https://api.github.com/user/repos?sort=updated&per_page=20`, {
+      headers,
+      cache: 'no-store',
+    })
 
     if (!repoResponse.ok) {
       console.error('GitHub repo fetch failed:', repoResponse.status)
@@ -27,6 +29,11 @@ export async function GET() {
     }
 
     const repoData = await repoResponse.json()
+
+    if (!Array.isArray(repoData)) {
+      console.error('Unexpected repo data:', repoData)
+      return Response.json([])
+    }
 
     const githubProjects = repoData
       .filter((repo) => !repo.fork && repo.name.toLowerCase() !== 'portfolio-documents')
@@ -67,24 +74,26 @@ export async function GET() {
     if (docsResponse.ok) {
       const docsData = await docsResponse.json()
 
-      pdfProjects = docsData
-        .filter((file) => file.name.toLowerCase().endsWith('.pdf'))
-        .map((file) => ({
-          type: 'pdf',
+      if (Array.isArray(docsData)) {
+        pdfProjects = docsData
+          .filter((file) => file.name.toLowerCase().endsWith('.pdf'))
+          .map((file) => ({
+            type: 'pdf',
 
-          name: file.name.replace('.pdf', ''),
+            name: file.name.replace('.pdf', ''),
 
-          description:
-            'Architecture solution document explaining the design and implementation approach.',
+            description:
+              'Architecture solution document explaining the design and implementation approach.',
 
-          url: file.download_url,
+            url: file.download_url,
 
-          stars: '',
+            stars: '',
 
-          language: 'Architecture',
+            language: 'Architecture',
 
-          image: '/pdf-thumbnail.png',
-        }))
+            image: '/pdf-thumbnail.png',
+          }))
+      }
     } else {
       console.error('Docs repo fetch failed:', docsResponse.status)
     }
