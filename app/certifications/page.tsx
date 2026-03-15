@@ -32,7 +32,6 @@ export default function Certifications() {
         color: '#e2e8f0',
       }}
     >
-      {/* Heading */}
       <h1
         style={{
           fontSize: 'clamp(32px,6vw,48px)',
@@ -55,7 +54,6 @@ export default function Certifications() {
         systems, and cloud analytics platforms.
       </p>
 
-      {/* Certifications Grid */}
       <div
         style={{
           display: 'grid',
@@ -64,14 +62,7 @@ export default function Certifications() {
         }}
       >
         {certifications.map((cert) => (
-          <a
-            key={cert.name}
-            href={cert.link}
-            target="_blank"
-            style={{
-              textDecoration: 'none',
-            }}
-          >
+          <a key={cert.name} href={cert.link} target="_blank" style={{ textDecoration: 'none' }}>
             <div
               style={{
                 background: '#0f172a',
@@ -86,7 +77,7 @@ export default function Certifications() {
               }
               onMouseLeave={(e) => (e.currentTarget.style.boxShadow = 'none')}
             >
-              <img src={cert.image} width="90" style={{ marginBottom: '18px' }} />
+              <img src={cert.image} alt={cert.name} width="90" style={{ marginBottom: '18px' }} />
 
               <h3
                 style={{
@@ -99,7 +90,7 @@ export default function Certifications() {
                 {cert.name}
               </h3>
 
-              <p style={{ fontSize: '14px', color: '#94a3b8' }}>{cert.issuer}</p>
+              <p style={{ fontSize: '14px', color: '#94a3b8' }}>{cert.org}</p>
             </div>
           </a>
         ))}
