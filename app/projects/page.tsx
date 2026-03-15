@@ -10,12 +10,30 @@ type Project = {
   url: string
 }
 
-export default async function Projects() {
-  const res = await fetch('http://localhost:3000/api/github', {
-    cache: 'no-store',
-  })
+async function getProjects(): Promise<Project[]> {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.harshittripathi.com'
 
-  const projects: Project[] = await res.json()
+    const res = await fetch(`${baseUrl}/api/github`, {
+      cache: 'no-store',
+    })
+
+    if (!res.ok) {
+      console.error('Failed to fetch projects:', res.status)
+      return []
+    }
+
+    const data = await res.json()
+
+    return Array.isArray(data) ? data : []
+  } catch (error) {
+    console.error('Projects fetch error:', error)
+    return []
+  }
+}
+
+export default async function Projects() {
+  const projects = await getProjects()
 
   return (
     <>
@@ -26,7 +44,7 @@ export default async function Projects() {
           </h1>
 
           <p className="divide-y divide-gray-200 dark:divide-gray-400">
-            This section have end-to-end projects & architectures solutions
+            This section have end-to-end projects & architecture solutions
           </p>
         </div>
 
