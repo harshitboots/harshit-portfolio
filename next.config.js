@@ -60,7 +60,7 @@ module.exports = () => {
     reactStrictMode: true,
     trailingSlash: true,
 
-    /* 🔴 ADD THIS PART */
+    /* Ignore ESLint errors during build */
     eslint: {
       ignoreDuringBuilds: true,
     },
@@ -77,11 +77,21 @@ module.exports = () => {
 
     pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
 
+    /* UPDATED IMAGE CONFIGURATION */
+
     images: {
       remotePatterns: [
         {
           protocol: 'https',
           hostname: 'picsum.photos',
+        },
+        {
+          protocol: 'https',
+          hostname: 'raw.githubusercontent.com',
+        },
+        {
+          protocol: 'https',
+          hostname: 'avatars.githubusercontent.com',
         },
       ],
       unoptimized,

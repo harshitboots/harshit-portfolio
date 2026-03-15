@@ -60,10 +60,10 @@ export default function GithubProjects() {
         </div>
       </a>
 
-      {/* REPO 1 */}
+      {/* GITHUB REPOS */}
 
-      {repos[0] && (
-        <a href={repos[0].url} target="_blank">
+      {repos.slice(0, 2).map((repo, index) => (
+        <a key={index} href={repo.url} target="_blank">
           <div
             style={{
               height: '100%',
@@ -77,16 +77,17 @@ export default function GithubProjects() {
             onMouseLeave={(e) => (e.currentTarget.style.boxShadow = 'none')}
           >
             <img
-              src={repos[0].image}
+              src={repo.image}
               style={{
                 width: '100%',
-                height: '200px',
+                aspectRatio: '16/9',
                 objectFit: 'cover',
+                objectPosition: 'center',
               }}
             />
 
             <div style={{ padding: '18px' }}>
-              <h3 style={{ fontSize: '18px' }}>{repos[0].name}</h3>
+              <h3 style={{ fontSize: '18px', marginBottom: '6px' }}>{repo.name}</h3>
 
               <p
                 style={{
@@ -94,53 +95,26 @@ export default function GithubProjects() {
                   color: '#94a3b8',
                 }}
               >
-                {repos[0].description}
+                {repo.description}
               </p>
-            </div>
-          </div>
-        </a>
-      )}
 
-      {/* REPO 2 */}
+              {/* EXTRA DETAILS */}
 
-      {repos[1] && (
-        <a href={repos[1].url} target="_blank">
-          <div
-            style={{
-              height: '100%',
-              border: '1px solid #374151',
-              borderRadius: '12px',
-              overflow: 'hidden',
-              background: '#0f172a',
-              transition: 'all .3s',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 0 25px rgba(56,189,248,.5)')}
-            onMouseLeave={(e) => (e.currentTarget.style.boxShadow = 'none')}
-          >
-            <img
-              src={repos[1].image}
-              style={{
-                width: '100%',
-                height: '200px',
-                objectFit: 'cover',
-              }}
-            />
-
-            <div style={{ padding: '18px' }}>
-              <h3 style={{ fontSize: '18px' }}>{repos[1].name}</h3>
-
-              <p
+              <div
                 style={{
-                  fontSize: '14px',
+                  display: 'flex',
+                  gap: '12px',
+                  marginTop: '10px',
+                  fontSize: '12px',
                   color: '#94a3b8',
                 }}
               >
-                {repos[1].description}
-              </p>
+                ⭐ {repo.stars}•{repo.language}
+              </div>
             </div>
           </div>
         </a>
-      )}
+      ))}
     </div>
   )
 }

@@ -26,17 +26,16 @@ export default function Certifications() {
   return (
     <main
       style={{
-        padding: '100px 80px',
+        padding: '80px 20px',
         maxWidth: '1400px',
         margin: '0 auto',
         color: '#e2e8f0',
       }}
     >
-      {/* PAGE TITLE */}
-
+      {/* Heading */}
       <h1
         style={{
-          fontSize: '48px',
+          fontSize: 'clamp(32px,6vw,48px)',
           fontWeight: '800',
           marginBottom: '20px',
         }}
@@ -46,23 +45,22 @@ export default function Certifications() {
 
       <p
         style={{
+          marginBottom: '60px',
           fontSize: '18px',
           color: '#94a3b8',
           maxWidth: '800px',
-          marginBottom: '60px',
         }}
       >
-        Professional certifications validating expertise in modern data platforms, distributed
-        processing, and data engineering best practices.
+        Professional certifications demonstrating expertise in modern data engineering, distributed
+        systems, and cloud analytics platforms.
       </p>
 
-      {/* CERTIFICATION GRID */}
-
+      {/* Certifications Grid */}
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(400px, 1fr))',
-          gap: '40px',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(260px,1fr))',
+          gap: '35px',
         }}
       >
         {certifications.map((cert) => (
@@ -70,68 +68,38 @@ export default function Certifications() {
             key={cert.name}
             href={cert.link}
             target="_blank"
-            style={{ textDecoration: 'none', color: 'inherit' }}
+            style={{
+              textDecoration: 'none',
+            }}
           >
             <div
               style={{
                 background: '#0f172a',
                 borderRadius: '14px',
-                overflow: 'hidden',
+                padding: '25px',
                 border: '1px solid #1e293b',
-                transition: '0.3s',
-                cursor: 'pointer',
+                textAlign: 'center',
+                transition: 'all .3s',
               }}
               onMouseEnter={(e) =>
-                (e.currentTarget.style.boxShadow = '0 0 25px rgba(59,130,246,.7)')
+                (e.currentTarget.style.boxShadow = '0 0 25px rgba(34,211,238,.6)')
               }
               onMouseLeave={(e) => (e.currentTarget.style.boxShadow = 'none')}
             >
-              {/* CERTIFICATE IMAGE */}
+              <img src={cert.image} width="90" style={{ marginBottom: '18px' }} />
 
-              <img
-                src={cert.image}
+              <h3
                 style={{
-                  width: '100%',
-                  height: '230px',
-                  objectFit: 'cover',
+                  fontSize: '18px',
+                  fontWeight: '600',
+                  marginBottom: '8px',
+                  color: '#fff',
                 }}
-              />
+              >
+                {cert.name}
+              </h3>
 
-              {/* CERT INFO */}
-
-              <div style={{ padding: '25px' }}>
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    marginBottom: '12px',
-                  }}
-                >
-                  <img src={cert.logo} width="30" height="30" />
-
-                  <span style={{ color: '#94a3b8' }}>{cert.org}</span>
-                </div>
-
-                <h3
-                  style={{
-                    fontSize: '20px',
-                    fontWeight: '600',
-                    marginBottom: '10px',
-                  }}
-                >
-                  {cert.name}
-                </h3>
-
-                <p
-                  style={{
-                    fontSize: '14px',
-                    color: '#94a3b8',
-                  }}
-                >
-                  {cert.description}
-                </p>
-              </div>
+              <p style={{ fontSize: '14px', color: '#94a3b8' }}>{cert.issuer}</p>
             </div>
           </a>
         ))}

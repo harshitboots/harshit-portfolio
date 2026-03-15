@@ -139,7 +139,7 @@ export default function TechStack() {
   return (
     <main
       style={{
-        padding: '100px 80px',
+        padding: '80px 20px',
         maxWidth: '1400px',
         margin: '0 auto',
         color: '#e2e8f0',
@@ -147,7 +147,7 @@ export default function TechStack() {
     >
       <h1
         style={{
-          fontSize: '48px',
+          fontSize: 'clamp(32px, 6vw, 48px)',
           fontWeight: '800',
           marginBottom: '20px',
         }}
@@ -192,7 +192,7 @@ export default function TechStack() {
                 style={{
                   background: '#0f172a',
                   borderRadius: '12px',
-                  padding: '25px',
+                  padding: '18px',
                   textAlign: 'center',
                   border: '1px solid #1e293b',
                   transition: '0.3s',
@@ -202,7 +202,7 @@ export default function TechStack() {
                 }
                 onMouseLeave={(e) => (e.currentTarget.style.boxShadow = 'none')}
               >
-                <img src={tool.logo} width="70" height="70" style={{ marginBottom: '12px' }} />
+                <img src={tool.logo} width="60" height="60" style={{ marginBottom: '12px' }} />
 
                 <p style={{ fontSize: '15px' }}>{tool.name}</p>
               </div>

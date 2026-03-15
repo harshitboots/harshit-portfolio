@@ -1,30 +1,44 @@
-import projectsData from '@/data/projectsData'
 import Card from '@/components/Card'
 import { genPageMetadata } from 'app/seo'
 
 export const metadata = genPageMetadata({ title: 'Projects' })
 
-export default function Projects() {
+type Project = {
+  name: string
+  description: string
+  image: string
+  url: string
+}
+
+export default async function Projects() {
+  const res = await fetch('http://localhost:3000/api/github', {
+    cache: 'no-store',
+  })
+
+  const projects: Project[] = await res.json()
+
   return (
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-          <h1 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 dark:text-gray-100">
+          <h1 className="cursor-default text-3xl font-extrabold tracking-tight text-white transition-all duration-300 hover:text-cyan-400 hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.9)] sm:text-4xl md:text-6xl">
             Projects
           </h1>
-          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            Showcase your projects with a hero image (16 x 9)
+
+          <p className="divide-y divide-gray-200 dark:divide-gray-400">
+            This section have end-to-end projects & architectures solutions
           </p>
         </div>
+
         <div className="container py-12">
-          <div className="-m-4 flex flex-wrap">
-            {projectsData.map((d) => (
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {projects.map((project, index) => (
               <Card
-                key={d.title}
-                title={d.title}
-                description={d.description}
-                imgSrc={d.imgSrc}
-                href={d.href}
+                key={index}
+                title={project.name}
+                description={project.description}
+                imgSrc={project.image}
+                href={project.url}
               />
             ))}
           </div>
