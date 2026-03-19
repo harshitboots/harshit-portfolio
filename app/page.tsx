@@ -87,7 +87,7 @@ export default function Home() {
                 color: '#d4af37',
               }}
             >
-              Lead Data Engineer • Data Platforms • Lakehouse Architect
+              Lead Data Engineer • Data Platforms • Analytics & AI Enablement
             </h2>
 
             <p
@@ -97,11 +97,17 @@ export default function Home() {
                 color: '#cbd5f5',
               }}
             >
-              I design and build modern data platforms that transform complex data ecosystems into
-              scalable, reliable analytical systems. My work focuses on lakehouse architectures,
-              data mesh principles, and distributed data pipelines, using modeling approaches like
-              Data Vault and knowledge graphs to make enterprise data discoverable, governed, and
-              analytics-ready.
+              Idesign and build modern data platforms that transform complex data into scalable,
+              reliable, and business ready insights. With over 10+ years of experience, I work
+              across the full data lifecycle—from ingestion and transformation to data modeling and
+              analytics enablement. My expertise spans multi-cloud data ecosystems, including Azure,
+              GCP, and modern data stacks using Databricks, Snowflake, BigQuery, and dbt. I focus on
+              building governed, high-performance data platforms that support both analytics and
+              advanced use cases like machine learning and AI. Beyond engineering pipelines, I aim
+              to create data products that are trusted, reusable, and easy to consume—enabling
+              analysts, data scientists, and business teams to make faster, data-driven decisions.
+              I’m passionate about solving real-world data challenges, improving data quality and
+              governance, and designing platforms that scale with business needs.
             </p>
           </div>
         </div>
